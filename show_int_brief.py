@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 #
+# $Id: show_int_brief.py,v 0.0.3 2023/04/04 14:12:19 vp@dtel-ix.net Exp $
+# - Added check if DDM data available
+#
 # $Id: show_int_brief.py,v 0.0.2 2023/03/28 18:19:21 vp@dtel-ix.net Exp $
 # - Added matching by interface name
 #
@@ -98,8 +101,9 @@ def run_cmds(s, commands, format = 'json'):
 #{{{
 def get_power(if_name):
     out = run_cmds(s, [ str.format('show interfaces %s transceiver dom' % if_name) ])
-    out = out[0]['interfaces'][if_name]['parameters']
     string = ''
+    if 'parameters' not in out[0]['interfaces'][if_name]: return '        -/-'
+    out = out[0]['interfaces'][if_name]['parameters']
     for lane in out['rxPower']['channels']:
         if string != '': string = string + '  '
         tx = str.format('%.1f' % out['txPower']['channels'][lane])
