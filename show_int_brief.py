@@ -23,7 +23,7 @@
 #
 # 2. Place the script in a common accessible place (say /usr/local/bin), set appropriate
 #    permissions on it (chmod a+x /usr/local/bin/show_int_brief.py) and configure an
-#    alias to call it from CLI:
+#    alias to call it from CLI (press Ctrl-V and ? to insert question mark):
 #
 #    alias "sh(o|ow)? int(e|er|erf|erfa|erfac|erface|erfaces)? br(i|ie|ief)?"
 #       10 bash /usr/local/bin/show_int_brief.py
